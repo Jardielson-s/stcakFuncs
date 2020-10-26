@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "prototype.h"
-#define MAX 4
+
 
 
 void menu(){
@@ -16,9 +16,14 @@ void menu(){
     printf("\n\t 9- retorna topo pilha 2");
     printf("\n\t 10- list pilha 2");
     printf("\n\t 11- listDC pilha 2");
-    printf("\n\t 12- esvazia pilha pilha 2");
+    printf("\n\t 12- esvazia pilha pilha 2\n");
     printf("\n\t 13- tranferir de pilha 1 para pilha 2");
-    printf("\n\t 13- tranferir de pilha 2 para pilha 1");
+    printf("\n\t 14- tranferir de pilha 2 para pilha 1\n");
+    printf("\n\t 15- empilhar Store");
+    printf("\n\t 16- desempilhar Store");
+    printf("\n\t 17- esvaziar Store");
+    printf("\n\t 18- list Store");
+    printf("\n\t 19- retorna topo da Store\n");
     
 }
 int vazia(Stack *s){
@@ -107,7 +112,7 @@ int list_BC(Stack *s){
 
 void destruir(Stack *s){
   
-  s->topo = -1;
+  
   free(s->value);
 
 }
@@ -210,7 +215,7 @@ int list_BC2(Stack2 *S){
 
 void destruir2(Stack2 *S){
   
-  S->topo = -1;
+  
   free(S->value);
 
 }
@@ -246,4 +251,92 @@ void transferir_pilha2_para_pilha1(Stack *s,Stack2 *S){
       s->value[S->topo] = S->value[S->topo];
     }
 
+}
+
+
+
+// STORE
+
+void criarStore(Store *d){
+  
+  d->topo = -1;
+  d->store = (int *)malloc(sizeof(int));
+}
+
+void empilharStore(Store *d,Stack *s,Stack2 *S){
+  
+  if(d->topo == -1)
+  {
+
+     for(s->topo;s->topo >= 0;s->topo--)
+     {
+       d->topo++;
+       d->store[d->topo] = s->value[s->topo];
+     }
+
+      for(S->topo;S->topo >= 0;S->topo--)
+     {
+          d->topo++;
+          d->store[d->topo] = S->value[S->topo];
+     }  
+
+  }
+  //else 
+  //{
+  //   for(S->topo;S->topo >= 0;S->topo--)
+  //   {
+  //        d->topo++;
+  //        d->store[d->topo] = S->value[S->topo];
+  //   }
+  //}
+}
+
+int desempilharStore(Store *d){
+  
+    int aux;
+    aux = d->store[d->topo];
+    d->topo--;
+    return aux;
+}
+
+
+void esvaziarStore(Store *d){
+
+  for(int i = MAX_STORE;i > 0;i--)
+  {
+    d->topo--;
+  }
+}
+
+void listStore(Store *d){
+ 
+  for(int i = 0;i <= d->topo;i++)
+  {
+     printf("\n\t stored = %d \n ",d->store[i]);
+  }
+}
+
+int retorna_topo_store(Store *d){
+   
+   return d->store[d->topo];
+}
+
+void destruirStore(Store *d){
+   
+   free(d->store);
+}
+
+int vaziaStore(Store *d){
+  
+  if(d->topo == -1)
+    return 1;
+  else 
+    return 0;
+}
+
+int cheiaStore(Store *d){
+  if(d->topo == MAX_STORE-1)
+    return 1;
+  else 
+    return 0;
 }

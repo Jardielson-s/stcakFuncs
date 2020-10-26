@@ -3,12 +3,13 @@
 
 
 int main(){
-  Stack s;  Stack2 S;
+  Stack s;  Stack2 S; Store d;
 
   int op,v;
 
   criar(&s);
   criar2(&S);
+  criarStore(&d);
   do{
     
    
@@ -37,7 +38,7 @@ int main(){
        }
        else
        {
-           desempilhar(&s);
+           printf("\n\t desenpilhado = %d \n ",desempilhar(&s));
        }
        break;
     case 3:
@@ -93,7 +94,7 @@ int main(){
        }
        else
        {
-           desempilhar2(&S);
+           printf("\n\t desempilhado = %d \n",desempilhar2(&S));
        }
        break;
     case 9:
@@ -156,11 +157,57 @@ int main(){
             transferir_pilha1_para_pilha2(&s,&S);
         }
         break;
+    case 15:
+        if(cheiaStore(&d) == 1){
+            printf("\n\t PILHA CHEIA \n");
+        }
+        else 
+        {
+          empilharStore(&d,&s,&S);
+        }
+        break;
+    case 16:
+       if(vaziaStore(&d) == 1){
+           printf("\n\t PILHA VAZIA \n");
+       }
+       else
+       {
+           printf("\n\t desempilhado = %d \n",desempilharStore(&d));
+       }
+       break;
+    case 17:
+        if(vaziaStore(&d) == 1){
+            printf("\n\t PILHA VAZIA \n");
+        }
+        else 
+        {
+          esvaziarStore(&d);
+        }
+        break;
+    case 18:
+       if(vaziaStore(&d) == 1){
+            printf("\n\t PILHA VAZIA \n");
+       }
+       else 
+       {
+          listStore(&d);
+       }
+       break;
+    case 19:
+       if(vaziaStore(&d) == 1){
+            printf("\n\t PILHA VAZIA \n");
+       }
+       else 
+       {
+            printf("\n\t topo = %d \n",retorna_topo_store(&d));
+       }
+       break;
     
     }
   }while (op != 0);
   
   destruir(&s);
   destruir2(&S);
+  destruirStore(&d);
 
 }
