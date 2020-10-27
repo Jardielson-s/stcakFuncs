@@ -260,7 +260,7 @@ void transferir_pilha2_para_pilha1(Stack *s,Stack2 *S){
 void criarStore(Store *d){
   
   d->topo = -1;
-  d->store = (int *)malloc(sizeof(int));
+  d->store = (int *)malloc(MAX_STORE * sizeof(int));
 }
 
 void empilharStore(Store *d,Stack *s,Stack2 *S){
@@ -273,22 +273,15 @@ void empilharStore(Store *d,Stack *s,Stack2 *S){
        d->topo++;
        d->store[d->topo] = s->value[s->topo];
      }
-
-      for(S->topo;S->topo >= 0;S->topo--)
+  }
+  else 
+  {
+     for(S->topo;S->topo >= 0;S->topo--)
      {
           d->topo++;
           d->store[d->topo] = S->value[S->topo];
-     }  
-
+     }
   }
-  //else 
-  //{
-  //   for(S->topo;S->topo >= 0;S->topo--)
-  //   {
-  //        d->topo++;
-  //        d->store[d->topo] = S->value[S->topo];
-  //   }
-  //}
 }
 
 int desempilharStore(Store *d){
