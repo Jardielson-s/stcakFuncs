@@ -8,4 +8,4 @@
 * ESTA APLICAÇÃO FOI UM EXERCÍCIO DA DISCIPLINA DE ESTRUTURA DE DADOS
 
 ##### images
-!(image1)[https://github.com/Jardielson-s/stcakFuncs/blob/main/image1.png]
+![image1](https://github.com/Jardielson-s/stcakFuncs/blob/main/image1.png)
