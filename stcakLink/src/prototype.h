@@ -19,7 +19,7 @@ struct stack2
 
 struct stackStore{
 
-int *store;
+int store[MAX_STORE];
 int topo;
 
 };
@@ -59,4 +59,5 @@ void esvaziarStore(Store *d);
 int retorna_topo_store(Store *d);
 void destruirStore(Store *d);
 int vaziaStore(Store  *d);
-int cheiaStore(Store *s);
+int cheiaStore(Store *d);
+void menuStore();

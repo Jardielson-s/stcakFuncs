@@ -260,12 +260,27 @@ void transferir_pilha2_para_pilha1(Stack *s,Stack2 *S){
 void criarStore(Store *d){
   
   d->topo = -1;
-  d->store = (int *)malloc(MAX_STORE * sizeof(int));
+  for(int i = 0;i < 8;i++)
+  {
+     d->store[i] = 0;
+  }
 }
+
+void menuStore(){
+   printf("\n\t 1- tranferir pilha 1 para o Array");
+   printf("\n\t 2- tranferir pilha 2 para o Array");
+   printf("\n\t 3- tranferir as duas pilhas para o Array\n");
+}
+
 
 void empilharStore(Store *d,Stack *s,Stack2 *S){
   
-  if(d->topo == -1)
+  int op;
+  menuStore();
+  printf("\t escolha a opcao:\t");
+  scanf("%d",&op);
+  
+  if(op == 1)
   {
 
      for(s->topo;s->topo >= 0;s->topo--)
@@ -274,8 +289,22 @@ void empilharStore(Store *d,Stack *s,Stack2 *S){
        d->store[d->topo] = s->value[s->topo];
      }
   }
+  else if(op == 2)
+  {
+     for(S->topo;S->topo >= 0;S->topo--)
+     {
+          d->topo++;
+          d->store[d->topo] = S->value[S->topo];
+     }
+  }
   else 
   {
+     for(s->topo;s->topo >= 0;s->topo--)
+     {
+       d->topo++;
+       d->store[d->topo] = s->value[s->topo];
+     }
+
      for(S->topo;S->topo >= 0;S->topo--)
      {
           d->topo++;
@@ -312,11 +341,6 @@ void listStore(Store *d){
 int retorna_topo_store(Store *d){
    
    return d->store[d->topo];
-}
-
-void destruirStore(Store *d){
-   
-   free(d->store);
 }
 
 int vaziaStore(Store *d){

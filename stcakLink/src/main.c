@@ -208,6 +208,6 @@ int main(){
   
   destruir(&s);
   destruir2(&S);
-  destruirStore(&d);
+  
 
 }
