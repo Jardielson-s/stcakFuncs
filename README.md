@@ -5,7 +5,7 @@
 - essa pilha contem 13 funções
 
 #### INFORMAÇÕES
-* FOI USADO O VSCODE 
+* FOI USADO O VSCODE com uma extensão para linguagem c
 
 
 ##### images
